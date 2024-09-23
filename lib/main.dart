@@ -1,3 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/gestures.dart';
@@ -6,7 +10,21 @@ import 'package:panorama_viewer/panorama_viewer.dart';
 import 'package:flutter/services.dart';
 import 'dart:html' as html;
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if(kIsWeb)
+    {
+     await Firebase.initializeApp(options: FirebaseOptions( apiKey: "AIzaSyA5An5dm5exwjX9agp_dwhj6qdTqWLBRRI",
+          authDomain: "emergency-help-c6266.firebaseapp.com",
+          projectId: "emergency-help-c6266",
+          storageBucket: "emergency-help-c6266.appspot.com",
+          messagingSenderId: "54619204460",
+          appId: "1:54619204460:web:e8a4339cc9a3f19899a149",
+          measurementId: "G-RT23QC42QR"));
+     print("Firebase initialization successful.");
+    }
+
   runApp(const MainApp());
 }
 
@@ -23,7 +41,9 @@ class MainApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String anotherImage;
+  final String audioFile;
+  const HomeScreen({super.key, required this.anotherImage, required this. audioFile});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -62,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // Function to play the audio file
   Future<void> _playAudio() async {
     if (!_isMuted) {
-      await _audioPlayer.play(AssetSource('frontViewVoice.mp3')); // Ensure the correct path
+      await _audioPlayer.play(UrlSource(widget.audioFile)); // Ensure the correct path
     }
   }
 
@@ -125,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: PanoramaViewer(
               key: _panoKey,
               animSpeed: 0.1,
-              child: Image.asset('assets/bridge.jpg'), // Your panorama image here
+              child:  Image.network(widget.anotherImage)
             ),
           ),
           // Add Zoom buttons on top-right corner with white circular background
