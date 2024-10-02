@@ -4,8 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kindnesstracker/Tile/displayTile.dart';
 
 import '../Model/model.dart';
+import 'mapScreen.dart';
 
 class DisplayScreen extends StatefulWidget {
+
   const DisplayScreen({super.key});
 
   @override
@@ -13,6 +15,7 @@ class DisplayScreen extends StatefulWidget {
 }
 
 class _DisplayScreenState extends State<DisplayScreen> {
+
   final ScrollController _scrollController = ScrollController();
 
   // Function to fetch data from Firestore
@@ -20,7 +23,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
     QuerySnapshot querySnapshot =
     await FirebaseFirestore.instance.collection('jk').get();
     return querySnapshot.docs
-        .map((doc) => Item.fromFirestore(doc.data() as Map<String, dynamic>))
+        .map((doc)=>Item.fromFirestore(doc.data()as Map<String,dynamic>))
         .toList();
   }
 
@@ -63,15 +66,39 @@ class _DisplayScreenState extends State<DisplayScreen> {
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 30),
-                    child: Text(
-                      "What will you explore today?",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 35,
+                  Row(
+
+                    children: [
+
+                      IconButton(
+                          onPressed: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context)=>FullScreenImage())
+                            );
+                          },
+                          icon:Icon(
+                            Icons.change_circle_outlined,
+                            color: Colors.black,
+                            size: 60,
+                          )
                       ),
-                    ),
+
+                       SizedBox(width: 300,),
+                      
+                       Padding(
+                        padding: EdgeInsets.only(top: 30),
+                        child: Text(
+                          "What will you explore today?",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 35,
+                          ),
+
+                                            ),
+                      ),
+                      
+                      
+          ]
                   ),
                   const SizedBox(height: 6),
                   const Text(

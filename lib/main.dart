@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/gestures.dart';
 import 'package:kindnesstracker/screen/displayScreen.dart';
+import 'package:kindnesstracker/screen/mapScreen.dart';
+import 'package:kindnesstracker/screen/mapScreen.dart';
 import 'package:panorama_viewer/panorama_viewer.dart';
 import 'package:flutter/services.dart';
 import 'dart:html' as html;
@@ -33,9 +35,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DisplayScreen(),
+      home: FullScreenImage(),
     );
   }
 }
