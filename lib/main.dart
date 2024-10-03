@@ -5,30 +5,55 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/gestures.dart';
+import 'package:kindnesstracker/screen/aiScreen.dart';
 import 'package:kindnesstracker/screen/displayScreen.dart';
 import 'package:kindnesstracker/screen/mapScreen.dart';
 import 'package:kindnesstracker/screen/mapScreen.dart';
 import 'package:panorama_viewer/panorama_viewer.dart';
 import 'package:flutter/services.dart';
 import 'dart:html' as html;
+import 'package:flutter_gemini/flutter_gemini.dart';
 
-void main() async{
+void main() async {
+  // Ensure Flutter widgets are initialized
   WidgetsFlutterBinding.ensureInitialized();
 
-  if(kIsWeb)
-    {
-     await Firebase.initializeApp(options: FirebaseOptions( apiKey: "AIzaSyA5An5dm5exwjX9agp_dwhj6qdTqWLBRRI",
+  // Variable to track if Firebase initialization was successful
+  bool isFirebaseInitialized = false;
+
+  try {
+    // Initialize Gemini (assuming it's synchronous)
+    Gemini.init(apiKey: 'AIzaSyAY8EWYFrbh26r7oUo-T6SdXRgAXXcwkzA');
+
+    // Initialize Firebase if running on the web
+    if (kIsWeb) {
+      await Firebase.initializeApp(
+        options: FirebaseOptions(
+          apiKey: "AIzaSyA5An5dm5exwjX9agp_dwhj6qdTqWLBRRI",
           authDomain: "emergency-help-c6266.firebaseapp.com",
           projectId: "emergency-help-c6266",
           storageBucket: "emergency-help-c6266.appspot.com",
           messagingSenderId: "54619204460",
           appId: "1:54619204460:web:e8a4339cc9a3f19899a149",
-          measurementId: "G-RT23QC42QR"));
-     print("Firebase initialization successful.");
+          measurementId: "G-RT23QC42QR",
+        ),
+      );
+      isFirebaseInitialized = true;
+      print("Firebase initialization successful.");
     }
+  } catch (e) {
+    print("Error during initialization: $e");
+  }
 
+  // Check if both Firebase and Gemini are initialized successfully
+  if (isFirebaseInitialized) {
+    print("Connect Gemini");
+  }
+
+  // Run the main application
   runApp(const MainApp());
 }
+
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -181,6 +206,36 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+
+          Positioned(
+            top: 30,
+            left: 10,
+            child: Column(
+              children: [
+               ElevatedButton(onPressed: (){
+                 Navigator.push(context,
+
+                     MaterialPageRoute(builder: (context)=>
+                         Aiscreen()
+
+                     )
+
+                 );
+
+               },
+                   child: Text("ASK AI",style: TextStyle(
+                     fontSize: 20,
+                     fontWeight: FontWeight.bold,
+                     color: Colors.black
+                   ),)
+               
+               )
+              ],
+            ),
+          ),
+
+
+
           // Fullscreen button on the bottom-right corner
           Positioned(
             bottom: 30,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:lottie/lottie.dart';
 import '../Model/model.dart'; // Import your Item model
 import '../main.dart'; // Ensure to import your HomeScreen class
 import 'displayScreen.dart';
@@ -62,7 +63,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
 
   // Handle marker click
   void _onMarkerTap(BuildContext context, String locationName, String documentName) async {
-    final item = await _fetchItem(documentName);
+    final  item = await _fetchItem(documentName);
     if (item != null) {
       _showMarkerDialog(context, locationName, item);
     } else {
@@ -118,12 +119,10 @@ class _FullScreenImageState extends State<FullScreenImage> {
                     _onMarkerTap(context, "Location: Soshi lodge Mymensing", "soshilodgeMymensing"); // Use document name
                   },
 
-                    child: Image.asset(
-                      'assets/house.png',
-                      width: 60.0,
-                      height: 60.0,
-
-                  ),
+                    child:Lottie.asset('assets/location.json',
+                        height: 60,
+                        width: 60
+                    )
                 ),
               ),
 
@@ -162,11 +161,10 @@ class _FullScreenImageState extends State<FullScreenImage> {
                   onTap: () {
                     _onMarkerTap(context, "Location 1: Lalbagh Fort", "lalbagfort"); // Use document name
                   },
-                  child: Image.asset(
-                    'assets/red-fort.png',
-                    width: 60.0,
-                    height: 60.0,
-                  ),
+                  child:Lottie.asset('assets/location.json',
+                      height: 60,
+                      width: 60
+                  )
                 ),
               ),
 
@@ -183,11 +181,10 @@ class _FullScreenImageState extends State<FullScreenImage> {
                   onTap: () {
                     _onMarkerTap(context, "Location : Tajhat place Rangpur", "tajhatplaceRangpur"); // Use document name
                   },
-                  child: Image.asset(
-                    'assets/buckingham-palace.png',
-                    width: 60.0,
-                    height: 60.0,
-                  ),
+                  child:Lottie.asset('assets/location.json',
+                      height: 60,
+                      width: 60
+                  )
                 ),
               ),
 
@@ -203,11 +200,10 @@ class _FullScreenImageState extends State<FullScreenImage> {
                   onTap: () {
                     _onMarkerTap(context, "Location : Baliati Jamidar Bari", "BaliatiJamidarBari"); // Use document name
                   },
-                  child: Image.asset(
-                    'assets/tarashbhaban.png',
-                    width: 50.0,
-                    height: 50.0,
-                  ),
+                  child: Lottie.asset('assets/location.json',
+                      height: 60,
+                      width: 60
+                  )
                 ),
               ),
 
@@ -220,11 +216,10 @@ class _FullScreenImageState extends State<FullScreenImage> {
                   onTap: () {
                     _onMarkerTap(context, "Location : Puthia Rajbari", "puthiaRajbari"); // Use document name
                   },
-                  child: Image.asset(
-                    'assets/puthia.png',
-                    width: 60.0,
-                    height: 60.0,
-                  ),
+                  child: Lottie.asset('assets/location.json',
+                  height: 60,
+                    width: 60
+                  )
                 ),
               ),
 
