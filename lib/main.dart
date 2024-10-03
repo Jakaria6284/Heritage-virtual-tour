@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
     super.initState();
     _playAudio(); // Automatically play the audio on start
   }
@@ -170,9 +170,9 @@ class _HomeScreenState extends State<HomeScreen> {
               }
             },
             child: PanoramaViewer(
-              key: _panoKey,
-              animSpeed: 0.1,
-              child:  Image.network(widget.anotherImage)
+                key: _panoKey,
+                animSpeed: 0.1,
+                child:  Image.network(widget.anotherImage)
             ),
           ),
           // Add Zoom buttons on top-right corner with white circular background
@@ -212,24 +212,24 @@ class _HomeScreenState extends State<HomeScreen> {
             left: 10,
             child: Column(
               children: [
-               ElevatedButton(onPressed: (){
-                 Navigator.push(context,
+                ElevatedButton(onPressed: (){
+                  Navigator.push(context,
 
-                     MaterialPageRoute(builder: (context)=>
-                         Aiscreen()
+                      MaterialPageRoute(builder: (context)=>
+                          Aiscreen()
 
-                     )
+                      )
 
-                 );
+                  );
 
-               },
-                   child: Text("ASK AI",style: TextStyle(
-                     fontSize: 20,
-                     fontWeight: FontWeight.bold,
-                     color: Colors.black
-                   ),)
-               
-               )
+                },
+                    child: Text("ASK AI",style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black
+                    ),)
+
+                )
               ],
             ),
           ),
