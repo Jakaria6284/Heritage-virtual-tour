@@ -1,6 +1,6 @@
 # Heritage Explorer: AI-Powered 360° Guide to Bangladesh Heritage Sites
 
-**Heritage Explorer** is an innovative mobile application built with **Flutter** that allows users to explore Bangladesh's rich cultural heritage through interactive 360° virtual tours and an AI-powered chatbot. This app provides an immersive and educational experience of Bangladesh’s heritage sites, making them accessible to anyone, anywhere in the world.
+**Heritage Explorer** is an innovative flutter web application built with **Flutter** that allows users to explore Bangladesh's rich cultural heritage through interactive 360° virtual tours and an AI-powered chatbot. This app provides an immersive and educational experience of Bangladesh’s heritage sites, making them accessible to anyone, anywhere in the world.
 
 ## Features
 - **Interactive Map**: Explore a detailed map of Bangladesh’s heritage sites.
@@ -30,3 +30,5 @@
 - **Augmented Reality (AR)**: Add AR features for users to virtually experience the sites in real-time.
 - **Multi-Language Support**: Add more languages, including Bengali, to reach a wider audience.
 - **User Feedback**: Integrate real-time user feedback to continuously improve the AI bot's accuracy and responsiveness.
+
+- 
